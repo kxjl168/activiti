@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="  
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	
+      
+	
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	 <bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				      <value>application/json; charset=UTF-8</value>    
+             
+			</list>
+		</property>
+	</bean> 
+	
+	
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- json转换器 -->
+				
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<mvc:annotation-driven>
+	 <mvc:message-converters register-defaults="true">
+            <!-- 解决Controller返回json中文乱码问题 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <!-- <property name="supportedMediaTypes" value="text/html;charset=UTF-8" /> -->
+                <!-- <property name="supportedMediaTypes" value="application/json;charset=UTF-8" > -->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+	</mvc:annotation-driven>
+    
+<!-- 	
+	<mvc:resources mapping="/css/**" cache-period="30" location="/css/" order="0"/>
+<mvc:resources mapping="/js/**" cache-period="30" location="/js/" order="0"/>
+<mvc:resources mapping="/images/**" cache-period="30" location="/images/" order="0"/>
+<mvc:resources mapping="/html/**" cache-period="30" location="/html/" order="0"/>
+<mvc:resources mapping="/cool/**" cache-period="30" location="/cool/" order="0"/>
+<mvc:resources mapping="/file/**" cache-period="30" location="/file/" order="0"/>
+<mvc:resources mapping="/public/html/**" cache-period="30" location="/public/html/" order="0"/>
+
+	
+	 -->
+	
+	<!--引入配置属性文件 -->
+	<context:property-placeholder location="classpath:config.properties" />
+	<context:property-placeholder location="classpath:log4j.properties" />
+	
+	<!-- 自动扫描包 自动扫描含有@Service将其注入为bean -->
+	<context:component-scan base-package="com.ztgm"></context:component-scan>
+	
+	
+	
+	
+	
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀  0-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		 <property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" /> 
+			<!--  <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> --> 
+		<!-- 	 <property name="viewClass" value="com.kxjl.web.system.action.base.FtlResourceView"/> -->
+			 
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+		  <property name="order" value="0"/>
+	</bean>
+	
+	
+	
+	<!-- 
+	  配置freeMarker视图解析器  1
+    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=UTF-8"/>
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="cache" value="true" />
+        <property name="suffix" value=".ftl" />
+        <property name="order" value="1"/>
+    </bean>
+
+    配置freeMarker的模板路径
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/views/"/>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape" />
+            </map>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">3600</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+	
+	 -->
+	
+	
+	
+	<!-- <mvc:resources mapping="/*" location="/WEB-INF/" cache-period="31556926"/> -->
+<!--     <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/" cache-period="31556926"/>
+    <mvc:resources mapping="/images/**" location="/WEB-INF/resources/images/" cache-period="31556926"/>
+	 -->
+	
+
+	<!-- 配置多文件上传 -->
+<!-- 	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			上传文件大小限制为31M，31*1024*1024
+			<value>32505856</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean> -->
+	
+	<!-- 	<bean id="SpringBeanUtil" class="com.kxjl.web.system.SpringBeanUtil"/> -->
+	
+	<!-- <mvc:default-servlet-handler /> -->
+	
+	
+	
+
+
+	
+	
+	
+<!-- 
+	<mvc:interceptors>
+		使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求
+	
+			
+			使用filter
+	<mvc:interceptor>
+
+               <mvc:mapping path="/**" />  
+               
+			
+			<bean class="com.kxjl.web.system.action.base.LoginInterceptor">
+			    <property name="excludedUrls">
+                     <list>
+                         <value>/login.jsp</value>
+                        
+                         <value>/</value>  
+                          </list>
+                 </property>
+			    </bean> 
+		</mvc:interceptor> 
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**.action"/>
+			定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的
+		
+			<bean class="com.kxjl.web.system.action.base.FileUploadInterceptor">
+			上传文件大小限制为31M，31*1024*1024 使用拦截器拦截，跳转错误提示 
+			  <property name="maxSize" value="82505856"/>
+			</bean>
+		</mvc:interceptor>
+		
+			
+	</mvc:interceptors>
+	 -->
+	
+</beans>
