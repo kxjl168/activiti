@@ -57,24 +57,12 @@
         </mvc:message-converters>
 	</mvc:annotation-driven>
     
-<!-- 	
-	<mvc:resources mapping="/css/**" cache-period="30" location="/css/" order="0"/>
-<mvc:resources mapping="/js/**" cache-period="30" location="/js/" order="0"/>
-<mvc:resources mapping="/images/**" cache-period="30" location="/images/" order="0"/>
-<mvc:resources mapping="/html/**" cache-period="30" location="/html/" order="0"/>
-<mvc:resources mapping="/cool/**" cache-period="30" location="/cool/" order="0"/>
-<mvc:resources mapping="/file/**" cache-period="30" location="/file/" order="0"/>
-<mvc:resources mapping="/public/html/**" cache-period="30" location="/public/html/" order="0"/>
-
-	
-	 -->
-	
 	<!--引入配置属性文件 -->
 	<context:property-placeholder location="classpath:config.properties" />
 	<context:property-placeholder location="classpath:log4j.properties" />
 	
 	<!-- 自动扫描包 自动扫描含有@Service将其注入为bean -->
-	<context:component-scan base-package="com.ztgm"></context:component-scan>
+	<context:component-scan base-package="com.kxjl"></context:component-scan>
 	
 	
 	
@@ -94,113 +82,5 @@
 		  <property name="order" value="0"/>
 	</bean>
 	
-	
-	
-	<!-- 
-	  配置freeMarker视图解析器  1
-    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
-        <property name="contentType" value="text/html; charset=UTF-8"/>
-        <property name="exposeRequestAttributes" value="true" />
-        <property name="exposeSessionAttributes" value="true" />
-        <property name="exposeSpringMacroHelpers" value="true" />
-        <property name="cache" value="true" />
-        <property name="suffix" value=".ftl" />
-        <property name="order" value="1"/>
-    </bean>
-
-    配置freeMarker的模板路径
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/views/"/>
-        <property name="freemarkerVariables">
-            <map>
-                <entry key="xml_escape" value-ref="fmXmlEscape" />
-            </map>
-        </property>
-        <property name="defaultEncoding" value="UTF-8"/>
-        <property name="freemarkerSettings">
-            <props>
-                <prop key="template_update_delay">3600</prop>
-                <prop key="locale">zh_CN</prop>
-                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-                <prop key="date_format">yyyy-MM-dd</prop>
-                <prop key="number_format">#.##</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
-	
-	 -->
-	
-	
-	
-	<!-- <mvc:resources mapping="/*" location="/WEB-INF/" cache-period="31556926"/> -->
-<!--     <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/" cache-period="31556926"/>
-    <mvc:resources mapping="/images/**" location="/WEB-INF/resources/images/" cache-period="31556926"/>
-	 -->
-	
-
-	<!-- 配置多文件上传 -->
-<!-- 	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding">
-			<value>UTF-8</value>
-		</property>
-		<property name="maxUploadSize">
-			上传文件大小限制为31M，31*1024*1024
-			<value>32505856</value>
-		</property>
-		<property name="maxInMemorySize">
-			<value>4096</value>
-		</property>
-	</bean> -->
-	
-	<!-- 	<bean id="SpringBeanUtil" class="com.kxjl.web.system.SpringBeanUtil"/> -->
-	
-	<!-- <mvc:default-servlet-handler /> -->
-	
-	
-	
-
-
-	
-	
-	
-<!-- 
-	<mvc:interceptors>
-		使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求
-	
-			
-			使用filter
-	<mvc:interceptor>
-
-               <mvc:mapping path="/**" />  
-               
-			
-			<bean class="com.kxjl.web.system.action.base.LoginInterceptor">
-			    <property name="excludedUrls">
-                     <list>
-                         <value>/login.jsp</value>
-                        
-                         <value>/</value>  
-                          </list>
-                 </property>
-			    </bean> 
-		</mvc:interceptor> 
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/**.action"/>
-			定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的
-		
-			<bean class="com.kxjl.web.system.action.base.FileUploadInterceptor">
-			上传文件大小限制为31M，31*1024*1024 使用拦截器拦截，跳转错误提示 
-			  <property name="maxSize" value="82505856"/>
-			</bean>
-		</mvc:interceptor>
-		
-			
-	</mvc:interceptors>
-	 -->
 	
 </beans>

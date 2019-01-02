@@ -51,11 +51,11 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- <property  name="configLocation"  value="classpath:sqlMapConfig.xml"/> -->
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<!-- <property name="mapperLocations" value="classpath*:com/ztgm/web/xml/*.xml" /> -->
+		<!-- <property name="mapperLocations" value="classpath*:com/kxjl/web/xml/*.xml" /> -->
 		<property name="mapperLocations" >
             <list>
-                <value>classpath*:com/ztgm/web/xml/*.xml</value>
-                <value>classpath*:com/ztgm/web/autodata/xml/*.xml</value>
+                <value>classpath*:com/kxjl/web/xml/*.xml</value>
+                <value>classpath*:com/kxjl/web/autodata/xml/*.xml</value>
             </list>
         </property>
 	</bean>
@@ -65,7 +65,7 @@
     </bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.ztgm.web.*.dao" />
+		<property name="basePackage" value="com.kxjl.web.*.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 

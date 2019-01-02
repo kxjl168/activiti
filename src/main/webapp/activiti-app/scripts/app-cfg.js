@@ -17,8 +17,8 @@ ACTIVITI.CONFIG = {
 
 ACTIVITI.CONFIG = {
 		'onPremise' : true,
-		'contextRoot' : '/activiti_test',
-		'webContextRoot' : '/activiti_test/activiti-app'
+		'contextRoot' : '/activiti_test_demo',
+		'webContextRoot' : '/activiti_test_demo/activiti-app'
 	};
 
 

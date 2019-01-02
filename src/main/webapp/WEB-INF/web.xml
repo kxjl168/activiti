@@ -50,7 +50,7 @@
     <context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:/applicationContext.xml,classpath*:applicationContext-*.xml
+			classpath*:/applicationContext.xml,classpath*:/applicationContext-*.xml
 		</param-value>
 	</context-param>
 
@@ -142,33 +142,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-<!-- 
- 	<servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping> 
-	 <servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.action</url-pattern>
-	</servlet-mapping> 
-	
-	 
-	  <servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/public/index/</url-pattern>
-	</servlet-mapping> 
-	
-	  
-	   <servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/public/detail/</url-pattern>
-	</servlet-mapping> 
-	 <servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/page/set/</url-pattern>
-	</servlet-mapping>  -->
-	
-	 
+
 
 
 	
