@@ -66,24 +66,24 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 导入测试脚本如下：
 1. 用户：
 
-INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('l2', '1', 'll', 'llder', 'l2@l123.com', '111111', NULL);
-INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('test-u', '1', 'test-u', NULL, 't@123.com', '111111', NULL);
-INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u1', '2', 'z', '三', 'u1@123.com', '111111', NULL);
-INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u2', '2', 'li', '四', 'u2@123.com', '111111', NULL);
-INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u3', '2', 'w', '五', 'u3@123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('l2', '1', 'll', > 'llder', 'l2@l123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('test-u', '1', 'test-u', NULL, 't@123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u1', '2', 'z', '三', 'u1@123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u2', '2', 'li', '四', 'u2@123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u3', '2', 'w', '五', 'u3@123.com', '111111', NULL);
 
 
 2. 分组：
-INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('cc', '1', '人事', 'assignment');
-INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader-group', '1', '领导组', 'assignment');
-INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader2', '1', '领导组2', 'assignment');
-INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('normal', '1', '研发组', 'assignment');
+> INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('cc', '1', '人事', 'assignment');
+> INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader-group', '1', '领导组', 'assignment');
+> INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader2', '1', '领导组2', 'assignment');
+> INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('normal', '1', '研发组', 'assignment');
 
 3. 关系：
-INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u3', 'cc');
-INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u2', 'leader-group');
-INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('l2', 'leader2');
-INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u1', 'normal');
+> INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u3', 'cc');
+> INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u2', 'leader-group');
+> INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('l2', 'leader2');
+> INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u1', 'normal');
 
 
 - 流程的启动：（u1用户，普通员工）
