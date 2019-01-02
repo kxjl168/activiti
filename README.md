@@ -7,7 +7,7 @@ https://www.256kb.cn/public/index/bt/activiti.html
 
 
 
-#配置数据库：
+# 配置数据库：
 activiti-app数据配置：
 resouces/META-INF/activiti-app/activit-app.properties
 
@@ -16,7 +16,7 @@ resouces/config.properties
 
 
 
-#配置activit-api访问路径：
+# 配置activit-api访问路径：
 /webapp/activit-app/script/app-cfg.js
 修改
 contextRoot，及webContextRoot路径
@@ -28,7 +28,7 @@ ACTIVITI.CONFIG = {
 
 
 
-#启动完成：
+# 启动完成：
 
 activit-app访问路径：
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
@@ -40,7 +40,7 @@ admin/test
 
 
 
-#流程操作相关：
+# 流程操作相关：
 
 >发布：
 http://127.0.0.1:8080/activiti_test_demo/deploy/test
@@ -61,10 +61,10 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 
 
 
->流程的启动，
+- 流程的启动，
 需要导入或者自己在控制台新建用户，
 导入测试脚本如下：
-用户：
+1.用户：
 
 INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('l2', '1', 'll', 'llder', 'l2@l123.com', '111111', NULL);
 INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('test-u', '1', 'test-u', NULL, 't@123.com', '111111', NULL);
@@ -73,29 +73,29 @@ INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_
 INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u3', '2', 'w', '五', 'u3@123.com', '111111', NULL);
 
 
-分组：
+2.分组：
 INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('cc', '1', '人事', 'assignment');
 INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader-group', '1', '领导组', 'assignment');
 INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('leader2', '1', '领导组2', 'assignment');
 INSERT INTO `activiti2`.`act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('normal', '1', '研发组', 'assignment');
 
-关系：
+3.关系：
 INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u3', 'cc');
 INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u2', 'leader-group');
 INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('l2', 'leader2');
 INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u1', 'normal');
 
 
->流程的启动：（u1用户，普通员工）
+- 流程的启动：（u1用户，普通员工）
 用户u1开始流程test
 http://127.0.0.1:8080/activiti_test_demo/start/test/u1
 
->流程当前进度查看，id为instanceid
+- 流程当前进度查看，id为instanceid
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?id=2505&type=runtime
 
 
 
->流程的待办： （u2用户，领导组）
+- 流程的待办： （u2用户，领导组）
 http://127.0.0.1:8080/activiti_test_demo/tasklist/u2
 
 
