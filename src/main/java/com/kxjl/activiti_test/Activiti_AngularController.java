@@ -44,7 +44,7 @@ public class Activiti_AngularController {
 	@RequestMapping("/activiti-app/*")
 	public String activiti_app() {
 
-		return "activiti-app/index";
+		return "activiti-app/index.html";
 		
 
 	}
