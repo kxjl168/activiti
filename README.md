@@ -28,7 +28,7 @@ contextRoot，及webContextRoot路径
 
 
 
-#更新：
+# 更新：
 之前使用的包 activiti-app-logic-6.0.1-SNAPSHOT.jar 
 和activiti-app-rest-6.0.1-SNAPSHOT.jar 都是我自己本地打出的包，
 我本地使用的eclipse jetty启动。没有发现问题，
