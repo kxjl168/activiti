@@ -34,6 +34,7 @@ contextRoot，及webContextRoot路径
 我本地使用的eclipse jetty启动。没有发现问题，
 网友 提出问题，排查后发现pom中缺少配置，已修改
 增加如下 ，将jar包打入war即可。
+如果使用eclipse,jetty，启动过程不需要以下配置，最后打包生成需要
 	<build>
 
 		<resources>
@@ -81,7 +82,7 @@ ACT_RE_PROCDEF
 上方test为如下文件开头
 deploy/{resouces/diagrams/流程名称.bpmn20.xml}
 
-发布完成的流程id为 test:x:xxxx
+发布完成的流程id为 test:xxx:xxxx
 
 使用如下链接查看流程，
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?processid=test:1:2504&type=process-definition
