@@ -22,7 +22,24 @@
 
 	</properties>
 
+<!-- 
+	<build>
 
+		<resources>
+
+			190428-补充，修复idea，mvn打包缺失 自定义jar lib
+			<resource>
+				<targetPath>${basedir}/src/main/webapp/WEB-INF/lib</targetPath>
+				<directory>${basedir}/lib</directory>
+				<filtering>true</filtering>
+				<includes>
+					 native lib
+					<include>**/*.jar</include>
+				</includes>
+			</resource>
+
+		</resources>
+	</build> -->
 
 
 	<dependencies>
@@ -34,18 +51,10 @@
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-app-conf</artifactId>
 			<version>${project.version}</version>
+
 		</dependency>
 
 
-		<!-- 修改流程线条name字段返回 -->
-		<dependency>
-			<groupId>org.activiti</groupId>
-			<artifactId>activiti-app-logic</artifactId>
-
-			<version>6.0.1-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/activiti-app-logic-6.0.1-SNAPSHOT.jar</systemPath>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
 		<dependency>
@@ -62,14 +71,17 @@
 
 		<dependency>
 			<groupId>org.activiti</groupId>
-			<artifactId>activiti-app-rest</artifactId>
-			<version>6.0.1-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/activiti-app-rest-6.0.1-SNAPSHOT.jar</systemPath>
+			<artifactId>activiti-rest</artifactId>
+			<version>${project.version}</version>
 
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-config</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
-		<!-- 修改流程线条name字段返回 end -->
 
 
 		<dependency>
@@ -81,17 +93,34 @@
 
 
 
-		<dependency>
-			<groupId>org.activiti</groupId>
-			<artifactId>activiti-rest</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-spring</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-app-rest</artifactId>
+			<version>6.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/activiti-app-rest-6.0.1-SNAPSHOT.jar</systemPath>
+
+		</dependency>
+
+		<!-- 修改流程线条name字段返回 -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-app-logic</artifactId>
+
+			<version>6.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/activiti-app-logic-6.0.1-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<!-- 修改流程线条name字段返回 end -->
+
+
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -310,6 +339,9 @@
 
 
 	</dependencies>
+
+
+
 
 
 </project>
