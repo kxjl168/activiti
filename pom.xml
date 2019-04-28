@@ -22,7 +22,23 @@
 
 	</properties>
 
+<build>
 
+		<resources>
+
+			190428-补充，修复idea，mvn打包缺失 自定义jar lib
+			<resource>
+				<targetPath>${basedir}/src/main/webapp/WEB-INF/lib</targetPath>
+				<directory>${basedir}/lib</directory>
+				<filtering>true</filtering>
+				<includes>
+					 native lib
+					<include>**/*.jar</include>
+				</includes>
+			</resource>
+
+		</resources>
+	</build>
 
 
 	<dependencies>
