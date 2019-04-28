@@ -28,13 +28,13 @@
 
 		<resources>
 
-			190428-补充，修复idea，mvn打包缺失 自定义jar lib
+			<!-- 190428-补充，修复idea，mvn打包缺失 自定义jar lib  eclipse运行可不适用 -->
 			<resource>
 				<targetPath>${basedir}/src/main/webapp/WEB-INF/lib</targetPath>
 				<directory>${basedir}/lib</directory>
 				<filtering>true</filtering>
 				<includes>
-					 native lib
+				<!--	 native lib -->
 					<include>**/*.jar</include>
 				</includes>
 			</resource>
