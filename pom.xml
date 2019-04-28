@@ -22,8 +22,9 @@
 
 	</properties>
 
-<!-- 
-	<build>
+
+
+<build>
 
 		<resources>
 
@@ -39,8 +40,8 @@
 			</resource>
 
 		</resources>
-	</build> -->
 
+	</build> 
 
 	<dependencies>
 
