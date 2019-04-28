@@ -28,6 +28,35 @@ contextRoot，及webContextRoot路径
 
 
 
+#更新：
+之前使用的包 activiti-app-logic-6.0.1-SNAPSHOT.jar 
+和activiti-app-rest-6.0.1-SNAPSHOT.jar 都是我自己本地打出的包，
+我本地使用的eclipse jetty启动。没有发现问题，
+网友 提出问题，排查后发现pom中缺少配置，已修改
+增加如下 ，将jar包打入war即可。
+	<build>
+
+		<resources>
+
+			<!--190428-补充，修复idea，mvn打包缺失 自定义jar lib -->
+			<resource>
+				<targetPath>${basedir}/src/main/webapp/WEB-INF/lib</targetPath>
+				<directory>${basedir}/lib</directory>
+				<!-- <filtering>true</filtering> -->
+				<includes>
+					<!--  native lib -->
+					<include>**/*.jar</include>
+				</includes>
+			</resource>
+
+		</resources>
+	</build>
+
+
+
+#启动
+idea里面把deploy时，把 application_contenxt 路径设置为 /activiti_test_demo。
+
 # 启动完成：
 
 activit-app访问路径：
