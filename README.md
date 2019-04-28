@@ -72,16 +72,16 @@ admin/test
 # 流程操作相关：
 
 - 发布：
+发布test流程， 对应resources/diagrams下的 test.bpmn20.xml
 http://127.0.0.1:8080/activiti_test_demo/deploy/test
 
-发布test.bpmn20.xml
 发布数据表：
 ACT_RE_PROCDEF
 
 上方test为如下文件开头
 deploy/{resouces/diagrams/流程名称.bpmn20.xml}
 
-发布完成的流程id为 test:1:xxxx
+发布完成的流程id为 test:x:xxxx
 
 使用如下链接查看流程，
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?processid=test:1:2504&type=process-definition
