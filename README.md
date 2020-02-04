@@ -122,14 +122,14 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 用户u1开始流程test
 http://127.0.0.1:8080/activiti_test_demo/start/test/u1
 
-- 二、流程当前进度查看，id为instanceid
-http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?id=2505&type=runtime
+- 二、流程当前进度查看，id为act_hi_procinst 表 id 
+http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?id=instanceid&type=runtime
 
 
 
 - 三、流程的待办： （u2用户，领导组）
 http://127.0.0.1:8080/activiti_test_demo/tasklist/u2
-
+http://127.0.0.1:8080/activiti_test_demo/tasklist/u1
 
 其他操作参见blog说明。
 基本功能已经具备.
