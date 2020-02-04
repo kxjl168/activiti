@@ -31,10 +31,8 @@ contextRoot，及webContextRoot路径
 # 更新：
 之前使用的包 activiti-app-logic-6.0.1-SNAPSHOT.jar 
 和activiti-app-rest-6.0.1-SNAPSHOT.jar 都是我自己本地打出的包，
-我本地使用的eclipse jetty启动。没有发现问题，
-网友 提出问题，排查后发现pom中缺少配置，已修改
-增加如下 ，将jar包打入war即可。
-如果使用eclipse,jetty，启动过程不需要以下配置，最后打包生成需要
+主要修改了流程的画线显示等。
+filtering 使用false.
 	<build>
 
 		<resources>
@@ -43,7 +41,7 @@ contextRoot，及webContextRoot路径
 			<resource>
 				<targetPath>${basedir}/src/main/webapp/WEB-INF/lib</targetPath>
 				<directory>${basedir}/lib</directory>
-				<!-- <filtering>true</filtering> -->
+				<filtering>false</filtering>
 				<includes>
 					<!--  native lib -->
 					<include>**/*.jar</include>
@@ -52,7 +50,10 @@ contextRoot，及webContextRoot路径
 
 		</resources>
 	</build>
-
+# 更新2 20200204：
+pom.xml更新，之前的环境是公司环境，有网友Yuchen Huang反馈运行不了，
+在家里电脑调试后发现pom有问题，已更新。
+ps:使用mysql时，最好将lower_case_table_names=1 , 使用小写的表。
 
 
 #启动
@@ -71,8 +72,8 @@ admin/test
 
 
 # 流程操作相关：
-
-- 发布：
+-A、流程预处理
+- 一、发布：
 发布test流程， 对应resources/diagrams下的 test.bpmn20.xml
 http://127.0.0.1:8080/activiti_test_demo/deploy/test
 
@@ -84,6 +85,7 @@ deploy/{resouces/diagrams/流程名称.bpmn20.xml}
 
 发布完成的流程id为 test:xxx:xxxx
 
+- 二、查看
 使用如下链接查看流程，
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?processid=test:1:2504&type=process-definition
 访问前需要先登陆如下地址，(demo没有改造权限相关)
@@ -91,7 +93,7 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 
 
 
-- 流程的启动，
+- B、流程的操作
 需要导入或者自己在控制台新建用户，
 导入测试脚本如下：
 1. 用户：
@@ -116,16 +118,16 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 > INSERT INTO `activiti2`.`act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('u1', 'normal');
 
 
-- 流程的启动：（u1用户，普通员工）
+- 一、流程的启动：（u1用户，普通员工）
 用户u1开始流程test
 http://127.0.0.1:8080/activiti_test_demo/start/test/u1
 
-- 流程当前进度查看，id为instanceid
+- 二、流程当前进度查看，id为instanceid
 http://127.0.0.1:8080/activiti_test_demo/activiti-app/display/display.html?id=2505&type=runtime
 
 
 
-- 流程的待办： （u2用户，领导组）
+- 三、流程的待办： （u2用户，领导组）
 http://127.0.0.1:8080/activiti_test_demo/tasklist/u2
 
 
