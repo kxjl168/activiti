@@ -93,12 +93,12 @@ http://127.0.0.1:8080/activiti_test_demo/activiti-app/#/login
 
 
 
-- B、流程的操作
+ B、流程的操作
 需要导入或者自己在控制台新建用户，
 导入测试脚本如下：
 1. 用户：
 
-> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('l2', '1', 'll', > 'llder', 'l2@l123.com', '111111', NULL);
+> INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('l2', '1', 'll',  'llder', 'l2@l123.com', '111111', NULL);
 > INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('test-u', '1', 'test-u', NULL, 't@123.com', '111111', NULL);
 > INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u1', '2', 'z', '三', 'u1@123.com', '111111', NULL);
 > INSERT INTO `activiti2`.`act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `PICTURE_ID_`) VALUES ('u2', '2', 'li', '四', 'u2@123.com', '111111', NULL);
